@@ -62,10 +62,11 @@ class CopyDao:
 
         try:
 
-            # verify if table exists
-            if self.__outputTableExists() and renew:
-                # DROP the output table for renew all data
-                self.__dropOutputTable()
+            if renew:
+                # verify if table exists
+                if self.__outputTableExists():
+                    # DROP the output table for renew all data
+                    self.__dropOutputTable()
                 # fixed date based on last clean interpretation database (created_date)
                 start_date = self.date_to_copy
             else:
